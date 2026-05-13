@@ -57,6 +57,16 @@ if (is_array($decoration) && in_array('media', $decoration)) {
     <?php echo $this->ResourceTags($itemSet); ?>
     <?php echo $this->pageTitle($itemSet->displayTitle(null, ($valueLang)), 1); ?>
 
+     <?php
+        // code added to show the item set thumbnail if it exists, and to add a class to the thumbnail div for styling
+        $thumbnail = $this->thumbnail($itemSet, 'large');
+        if ($thumbnail):
+        ?>
+            <div class="resource-show__thumbnail item-set-thumbnail">
+                <?php echo $thumbnail; ?>
+            </div>
+        <?php endif; ?>
+
     <?php if ($mainHasBlocks || $leftSidebarHasBlocks || $rightSidebarHasBlocks): ?>
 
         <?php
