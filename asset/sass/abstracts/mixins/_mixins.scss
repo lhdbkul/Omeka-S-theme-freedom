@@ -36,6 +36,18 @@
     font-weight: 900;
 }
 
+// Self-hosted webfonts.
+@mixin font-face($family, $file, $weight, $style: normal) {
+    @font-face {
+        font-family: $family;
+        font-style: $style;
+        font-weight: $weight;
+        font-display: swap;
+        src: url("../fonts/#{$file}.woff2") format("woff2"),
+             url("../fonts/#{$file}.woff") format("woff");
+    }
+}
+
 @mixin button {
     appearance: none;
     -moz-appearance: none;
@@ -59,11 +71,6 @@
         color: $color__white;
     }
     
-    &:focus {
-        color: $color__white;
-        outline: 5px auto Highlight;
-    }
-    
     &:disabled,
     &[disabled]
     &.disabled {
@@ -85,10 +92,6 @@
     &:hover:not(.disabled) {
         background-color: $color__buttons;
         color: $color__white;
-    }
-    
-    &:focus {
-        outline: 5px auto Highlight;
     }
     
     &:disabled,
